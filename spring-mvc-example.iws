@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c062816-8ce0-4e53-af06-093e752a640a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/ApplicationResources.properties" afterPath="$PROJECT_DIR$/src/main/resources/ApplicationResources.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-mvc-example.iws" afterPath="$PROJECT_DIR$/spring-mvc-example.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userform.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userform.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="spring-mvc-example.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +12,7 @@
     <file path="/a.dummy" changelist="4c062816-8ce0-4e53-af06-093e752a640a" time="1375533509035" ignored="false" />
     <file path="/sample-data.xml" changelist="4c062816-8ce0-4e53-af06-093e752a640a" time="1375541409071" ignored="false" />
     <file path="/README-Appfuse.txt" changelist="4c062816-8ce0-4e53-af06-093e752a640a" time="1375538853464" ignored="false" />
-    <file path="/README.md" changelist="4c062816-8ce0-4e53-af06-093e752a640a" time="1375539098909" ignored="false" />
+    <file path="/README.md" changelist="4c062816-8ce0-4e53-af06-093e752a640a" time="1376059296714" ignored="false" />
     <file path="/web.xml" changelist="4c062816-8ce0-4e53-af06-093e752a640a" time="1376056928521" ignored="false" />
     <file path="/uploadDisplay.jsp" changelist="4c062816-8ce0-4e53-af06-093e752a640a" time="1376058204134" ignored="false" />
     <file path="/userform.jsp" changelist="4c062816-8ce0-4e53-af06-093e752a640a" time="1376058399922" ignored="false" />
@@ -228,15 +225,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserManagerImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/continuumsecurity/service/impl/UserManagerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="42" selection-start="3894" selection-end="3894" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -309,15 +297,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationResources.properties" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ApplicationResources.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/ApplicationResources.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="30" selection-start="440" selection-end="440" vertical-scroll-proportion="0.26362038">
+            <state line="10" column="30" selection-start="440" selection-end="440" vertical-scroll-proportion="-5.5555553">
               <folding />
             </state>
           </provider>
           <provider editor-type-id="ResourceBundle">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="14" selection-start="112" selection-end="112" vertical-scroll-proportion="0.12583892">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -346,13 +343,13 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/resources/default-data.xml" />
         <option value="$PROJECT_DIR$/README-Appfuse.txt" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/test/resources/sample-data.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/uploadDisplay.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/userform.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/ApplicationResources.properties" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -1314,13 +1311,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/continuumsecurity/service/UserSecurityAdvice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="5" selection-start="2710" selection-end="2710" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/continuumsecurity/webapp/controller/SignupController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="13" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0">
@@ -1430,12 +1420,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/ApplicationResources.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="30" selection-start="440" selection-end="440" vertical-scroll-proportion="0.26362038">
+        <state line="10" column="30" selection-start="440" selection-end="440" vertical-scroll-proportion="-5.5555553">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="14" selection-start="112" selection-end="112" vertical-scroll-proportion="0.12583892">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
