@@ -20,6 +20,12 @@
         <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
         <param-value>en</param-value>
     </context-param>
+
+    <context-param>
+        <description>Spring Expression Language Support</description>
+        <param-name>springJspExpressionSupport</param-name>
+        <param-value>true</param-value>
+    </context-param>
     <!-- Context Configuration locations for Spring XML files -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
