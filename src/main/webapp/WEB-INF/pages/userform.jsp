@@ -101,7 +101,7 @@
         </spring:bind>
             <appfuse:label styleClass="control-label" key="user.lastName"/>
             <div class="controls">
-                <form:input path="lastName" id="lastName" maxlength="50"/>
+                <form:input path="lastName" id="lastName" maxlength="50" htmlEscape="false"/>
                 <form:errors path="lastName" cssClass="help-inline"/>
             </div>
         </fieldset>

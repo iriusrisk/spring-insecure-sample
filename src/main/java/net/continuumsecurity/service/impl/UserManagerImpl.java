@@ -5,10 +5,7 @@ import net.continuumsecurity.model.User;
 import net.continuumsecurity.service.UserExistsException;
 import net.continuumsecurity.service.UserManager;
 import net.continuumsecurity.service.UserService;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.security.authentication.dao.SaltSource;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -134,6 +131,10 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
      */
     public User getUserByUsername(String username) throws UsernameNotFoundException {
         return (User) userDao.loadUserByUsername(username);
+    }
+
+    public User getUserDetailsByUsername(String username) throws UsernameNotFoundException {
+        return (User) userDao.loadUserDetailsByUsername(username);
     }
 
     /**

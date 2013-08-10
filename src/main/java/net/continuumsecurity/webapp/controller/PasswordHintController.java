@@ -71,11 +71,11 @@ public class PasswordHintController {
             return new ModelAndView("login");
         }
 
-        log.debug("Processing Password Hint...");
+        log.debug("Processing Password Hint for user: "+username);
 
         // look up the user's information
         try {
-            User user = userManager.getUserByUsername(username);
+            User user = userManager.getUserDetailsByUsername(username);
 
             StringBuffer msg = new StringBuffer();
             msg.append("Your password hint is: ").append(user.getPasswordHint());

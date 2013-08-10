@@ -8,7 +8,14 @@
         </span>
         <c:if test="${pageContext.request.remoteUser != null}">
         | <fmt:message key="user.status"/> ${pageContext.request.remoteUser}
+            Current URL:
+            <SCRIPT>
+
+                document.write(theURL);
+            </SCRIPT>
         </c:if>
+
+
     </span>
     <span class="right">
         &copy; <fmt:message key="copyright.year"/> <a href="<fmt:message key="company.url"/>"><fmt:message key="company.name"/></a>
