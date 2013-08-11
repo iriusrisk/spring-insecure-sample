@@ -68,7 +68,7 @@ public class FileUploadController extends BaseFormController {
         CommonsMultipartFile file = (CommonsMultipartFile) multipartRequest.getFile("file");
 
         // the directory to upload to
-        String uploadDir = getServletContext().getRealPath("/resources") + "/" + request.getRemoteUser() + "/";
+        String uploadDir = getServletContext().getRealPath("/resources") + "/";
 
         // Create the directory if it doesn't exist
         File dirPath = new File(uploadDir);
@@ -101,9 +101,10 @@ public class FileUploadController extends BaseFormController {
         request.setAttribute("size", file.getSize() + " bytes");
         request.setAttribute("location", dirPath.getAbsolutePath() + Constants.FILE_SEP + file.getOriginalFilename());
 
-        String link = request.getContextPath() + "/resources" + "/" + request.getRemoteUser() + "/";
+        String link = request.getContextPath() + "/viewFile?filename=resources/";
         request.setAttribute("link", link + file.getOriginalFilename());
-
+        log.info("Uploaded to: "+link+ file.getOriginalFilename());
+        log.info("Full path: "+dirPath.getAbsolutePath() + Constants.FILE_SEP + file.getOriginalFilename());
         return getSuccessView();
     }
 }

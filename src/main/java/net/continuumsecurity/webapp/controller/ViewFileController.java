@@ -1,36 +1,55 @@
 package net.continuumsecurity.webapp.controller;
 
-import net.continuumsecurity.Constants;
-import net.continuumsecurity.dao.SearchException;
-import net.continuumsecurity.service.UserManager;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ExtendedModelMap;
-import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Controller
-@RequestMapping("/admin/users*")
+@RequestMapping("/viewFile*")
 public class ViewFileController {
-    private UserManager userManager = null;
+    protected final transient Log log = LogFactory.getLog(getClass());
 
     @Autowired
-    public void setUserManager(UserManager userManager) {
-        this.userManager = userManager;
-    }
+    private ServletContext servletContext;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView handleRequest(@RequestParam(required = false, value = "q") String query) throws Exception {
-        Model model = new ExtendedModelMap();
+    public void getFile(@RequestParam(required = true, value = "filename") String fileName,
+                        HttpServletResponse response) {
+        String path = getServletContext().getRealPath("/resources") + "/" + fileName;
+        log.debug("Getting file: " + path);
+        File file = new File(path);
         try {
-            model.addAttribute(Constants.USER_LIST, userManager.search(query));
-        } catch (SearchException se) {
-            model.addAttribute("searchError", se.getMessage());
-            model.addAttribute(userManager.getUsers());
+            InputStream is = new FileInputStream(path);
+            log.debug("read");
+            FileCopyUtils.copy(is, response.getOutputStream());
+            log.debug("copy");
+
+            response.flushBuffer();
+            log.debug("flushed");
+
+        } catch (IOException ex) {
+            log.info("Error writing file to output stream. Filename was '" + path + "'");
+            throw new RuntimeException("IO Error writing file to output stream");
         }
-        return new ModelAndView("admin/userList", model.asMap());
+    }
+
+    public void setServletContext(ServletContext servletContext) {
+        this.servletContext = servletContext;
+    }
+
+    protected ServletContext getServletContext() {
+        return servletContext;
     }
 }
