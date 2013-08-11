@@ -23,7 +23,7 @@
         <row>
             <value description="id">-1</value>
             <value description="username">user</value>
-            <value description="password">tomcat</value>
+            <value description="password">b6b1f4781776979c0775c71ebdd8bdc084aac5fe</value>
             <value description="first_name">Tomcat</value>
             <value description="last_name">User</value>
             <value description="address"></value>
@@ -44,7 +44,7 @@
         <row>
             <value description="id">-2</value>
             <value description="username">admin</value>
-            <value description="password">5f4dcc3b5aa765d61d8327deb882cf99</value>
+            <value description="password">a40546cc4fd6a12572828bb803380888ad1bfdab</value>
             <value description="first_name">Admin</value>
             <value description="last_name">Admin</value>
             <value description="address"></value>
@@ -65,7 +65,7 @@
         <row>
             <value description="id">-3</value>
             <value description="username">alice</value>
-            <value description="password">5ebe2294ecd0e0f08eab7690d2a6ee69</value>
+            <value description="password">135d2adf541bbe4275b7103a699607927fa7b758</value>
             <value description="first_name">Alice</value>
             <value description="last_name">Green</value>
             <value description="address"></value>
@@ -86,7 +86,7 @@
         <row>
             <value description="id">-4</value>
             <value description="username">bob</value>
-            <value description="password">72b302bf297a228a75730123efef7c41</value>
+            <value description="password">d66cd6dc0bbc4b3384d51f4e407051ae0df22b7d</value>
             <value description="first_name">Robert</value>
             <value description="last_name">Brown</value>
             <value description="address"></value>

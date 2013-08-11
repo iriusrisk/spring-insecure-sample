@@ -2,10 +2,6 @@
 
     <div id="divider"><div></div></div>
     <span class="left"><fmt:message key="webapp.version"/> |
-        Current URL:
-            <script>
-                document.write(document.URL);
-            </script>
 
         <span id="validators">
             <a href="http://validator.w3.org/check?uri=referer">XHTML Valid</a> |

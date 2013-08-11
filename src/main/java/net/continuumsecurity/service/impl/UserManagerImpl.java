@@ -134,6 +134,7 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
     }
 
     public User getUserDetailsByUsername(String username) throws UsernameNotFoundException {
+        log.debug("Encoded password is: "+passwordEncoder.encodePassword("password",null));
         return (User) userDao.loadUserDetailsByUsername(username);
     }
 

@@ -62,6 +62,10 @@
             <c:if test="${pageContext.request.remoteUser != null}">
             | <fmt:message key="user.status"/> ${pageContext.request.remoteUser}
             </c:if>
+            Current URL:
+            <script>
+                document.write(unescape(document.URL));
+            </script>
         </span>
         <span class="right">
             &copy; <fmt:message key="copyright.year"/> <a href="<fmt:message key="company.url"/>"><fmt:message key="company.name"/></a>
