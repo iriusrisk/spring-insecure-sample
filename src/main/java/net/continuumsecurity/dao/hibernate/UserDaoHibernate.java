@@ -5,6 +5,7 @@ import net.continuumsecurity.model.User;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.dao.RecoverableDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.hibernate4.SessionFactoryUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -85,7 +86,6 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
      * {@inheritDoc}
     */
     public UserDetails loadUserDetailsByUsername(String username) throws UsernameNotFoundException {
-
         String dbUrl = "jdbc:mysql://localhost/spring_mvc_example";
         String dbClass = "com.mysql.jdbc.Driver";
         String query = "Select * from app_user where username='"+username+"'";
@@ -120,7 +120,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RecoverableDataAccessException(e.getMessage());
         }
         if (user == null) throw new UsernameNotFoundException("user '" + username + "' not found...");
         return user;
