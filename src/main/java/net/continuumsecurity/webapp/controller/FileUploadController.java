@@ -99,10 +99,11 @@ public class FileUploadController extends BaseFormController {
         request.setAttribute("fileName", file.getOriginalFilename());
         request.setAttribute("contentType", file.getContentType());
         request.setAttribute("size", file.getSize() + " bytes");
-        request.setAttribute("location", dirPath.getAbsolutePath() + Constants.FILE_SEP + file.getOriginalFilename());
 
-        String link = request.getContextPath() + "/viewFile?filename=resources/";
-        request.setAttribute("link", link + file.getOriginalFilename());
+        String link = request.getContextPath() + "/viewFile?filename="+ file.getOriginalFilename() ;
+        request.setAttribute("link", link);
+        request.setAttribute("location", link);
+
         log.info("Uploaded to: "+link+ file.getOriginalFilename());
         log.info("Full path: "+dirPath.getAbsolutePath() + Constants.FILE_SEP + file.getOriginalFilename());
         return getSuccessView();
