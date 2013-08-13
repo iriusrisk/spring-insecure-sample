@@ -156,22 +156,22 @@ public class UserDaoTest extends BaseDaoTestCase {
         // reindex all the data
         dao.reindex();
 
-        List<User> found = dao.search("Matt");
+        List<User> found = dao.search("Admin");
         assertEquals(1, found.size());
         User user = found.get(0);
-        assertEquals("Matt", user.getFirstName());
+        assertEquals("Admin", user.getFirstName());
 
         // test mirroring
         user = dao.get(-2L);
-        user.setFirstName("MattX");
+        user.setFirstName("AdminX");
         dao.saveUser(user);
         flush();
         flushSearchIndexes();
 
         // now verify it is reflected in the index
-        found = dao.search("MattX");
+        found = dao.search("AdminX");
         assertEquals(1, found.size());
         user = found.get(0);
-        assertEquals("MattX", user.getFirstName());
+        assertEquals("AdminX", user.getFirstName());
     }
 }
