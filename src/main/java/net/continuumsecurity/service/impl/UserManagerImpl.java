@@ -87,7 +87,7 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
                 if (saltSource == null) {
                     // backwards compatibility
                     user.setPassword(passwordEncoder.encodePassword(user.getPassword(), null));
-                    log.warn("SaltSource not set, encrypting password w/o salt");
+                    log.warn("SaltSource not set, hashing password w/o salt");
                 } else {
                     user.setPassword(passwordEncoder.encodePassword(user.getPassword(),
                             saltSource.getSalt(user)));
@@ -134,7 +134,6 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
     }
     
     public User getUserDetailsByUsername(String username) throws UsernameNotFoundException {
-    	log.info("heello");
         return (User) userDao.loadUserDetailsByUsername(username);
     }
 

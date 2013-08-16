@@ -65,7 +65,7 @@
         <row>
             <value description="id">-3</value>
             <value description="username">alice</value>
-            <value description="password">5ebe2294ecd0e0f08eab7690d2a6ee69</value>
+            <value description="password">d8578edf8458ce06fbc5bb76a58c5ca4</value>
             <value description="first_name">Alice</value>
             <value description="last_name">Green</value>
             <value description="address"></value>
@@ -76,7 +76,7 @@
             <value description="postal_code">80210</value>
             <value description="province">CO</value>
             <value description="website">http://www.continuumsecurity.net</value>
-            <value description="password_hint"><![CDATA[Numbers]]></value>
+            <value description="password_hint"><![CDATA[Keyboard]]></value>
             <value description="version">1</value>
             <value description="account_enabled">1</value>
             <value description="account_expired">0</value>
