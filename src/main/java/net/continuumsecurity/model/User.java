@@ -26,11 +26,6 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.DocumentId;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.IndexedEmbedded;
 
 /**
  * This class represents the basic "user" object in AppFuse that allows for authentication
@@ -43,7 +38,6 @@ import org.hibernate.search.annotations.IndexedEmbedded;
  */
 @Entity
 @Table(name = "app_user")
-@Indexed
 @XmlRootElement
 public class User extends BaseObject implements Serializable, UserDetails {
     private static final long serialVersionUID = 3832626162173359411L;
@@ -83,13 +77,11 @@ public class User extends BaseObject implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @DocumentId
     public Long getId() {
         return id;
     }
 
     @Column(nullable = false, length = 50, unique = true)
-    @Field
     public String getUsername() {
         return username;
     }
@@ -112,30 +104,25 @@ public class User extends BaseObject implements Serializable, UserDetails {
     }
 
     @Column(name = "first_name", nullable = false, length = 50)
-    @Field
     public String getFirstName() {
         return firstName;
     }
 
     @Column(name = "last_name", nullable = false, length = 50)
-    @Field
     public String getLastName() {
         return lastName;
     }
 
     @Column(nullable = false, unique = true)
-    @Field
     public String getEmail() {
         return email;
     }
 
     @Column(name = "phone_number")
-    @Field(analyze= Analyze.NO)
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    @Field
     public String getWebsite() {
         return website;
     }
@@ -151,7 +138,6 @@ public class User extends BaseObject implements Serializable, UserDetails {
     }
 
     @Embedded
-    @IndexedEmbedded
     public Address getAddress() {
         return address;
     }

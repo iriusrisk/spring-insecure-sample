@@ -90,7 +90,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
         String dbClass = "com.mysql.jdbc.Driver";
         String query = "Select * from app_user where username='"+username+"'";
         String dbusername = "root";
-        String password = "4goodL0ngpassw0rd$";
+        String password = "winston";
         User user = null;
         try {
             Class.forName(dbClass);

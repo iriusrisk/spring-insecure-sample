@@ -521,17 +521,7 @@
 			<artifactId>dwr</artifactId>
 			<version>${dwr.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search</artifactId>
-			<version>${hibernate.search.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>hibernate-core</artifactId>
-					<groupId>org.hibernate</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -1046,7 +1036,7 @@
 		<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 		<jdbc.url>jdbc:mysql://localhost/${db.name}?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>
 		<jdbc.username>root</jdbc.username>
-		<jdbc.password>4goodL0ngpassw0rd$</jdbc.password>
+		<jdbc.password>winston</jdbc.password>
 		<!-- Properties calculated by AppFuse when running full-source plugin -->
 		<aspectj.version>1.6.10</aspectj.version>
 		<commons.beanutils.version>1.8.3</commons.beanutils.version>

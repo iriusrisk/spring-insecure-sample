@@ -54,6 +54,7 @@ public class UserFormController extends BaseFormController {
 	public String onSubmit(User user, BindingResult errors,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		
 		if (request.getParameter("cancel") != null) {
 			if (!StringUtils.equals(request.getParameter("from"), "list")) {
 				return getCancelView();
@@ -65,10 +66,7 @@ public class UserFormController extends BaseFormController {
 		if (validator != null) { // validator is null during testing
 			validator.validate(user, errors);
 
-			if (errors.hasErrors() && request.getParameter("delete") == null) { // don't
-																				// validate
-																				// when
-																				// deleting
+			if (errors.hasErrors() && request.getParameter("delete") == null) {
 				return "userform";
 			}
 		}
@@ -158,65 +156,25 @@ public class UserFormController extends BaseFormController {
 	@RequestMapping(method = RequestMethod.GET)
 	protected User showForm(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		// If not an administrator, make sure user is not trying to add or edit
-		// another user
-		if (!request.isUserInRole(Constants.ADMIN_ROLE)
-				&& !isFormSubmission(request)) {
-			if (isAdd(request) || request.getParameter("id") != null) {
-				response.sendError(HttpServletResponse.SC_FORBIDDEN);
-				log.warn("User '" + request.getRemoteUser()
-						+ "' is trying to edit user with id '"
-						+ request.getParameter("id") + "'");
+		log.info("User " + request.getRemoteUser() + " with ID="
+				+ request.getRequestedSessionId());
 
-				throw new AccessDeniedException(
-						"You do not have permission to modify other users.");
-			}
-		}
+		String userId = request.getParameter("id");
 
-		if (!isFormSubmission(request)) {
-			String userId = request.getParameter("id");
-
-			// if user logged in with remember me, display a warning that they
-			// can't change passwords
-			log.debug("checking for remember me login...");
-
-			AuthenticationTrustResolver resolver = new AuthenticationTrustResolverImpl();
-			SecurityContext ctx = SecurityContextHolder.getContext();
-
-			if (ctx.getAuthentication() != null) {
-				Authentication auth = ctx.getAuthentication();
-
-				if (resolver.isRememberMe(auth)) {
-					request.getSession().setAttribute("cookieLogin", "true");
-
-					// add warning message
-					saveMessage(
-							request,
-							getText("userProfile.cookieLogin",
-									request.getLocale()));
-				}
-			}
-
-			User user;
-			if (userId == null && !isAdd(request)) {
-				user = getUserManager().getUserByUsername(
-						request.getRemoteUser());
-			} else if (!StringUtils.isBlank(userId)
-					&& !"".equals(request.getParameter("version"))) {
-				user = getUserManager().getUser(userId);
-			} else {
-				user = new User();
-				user.addRole(new Role(Constants.USER_ROLE));
-			}
-
-			user.setConfirmPassword(user.getPassword());
-
-			return user;
+		User user;
+		if (userId == null && !isAdd(request)) {
+			user = getUserManager().getUserByUsername(request.getRemoteUser());
+		} else if (!StringUtils.isBlank(userId)
+				&& !"".equals(request.getParameter("version"))) {
+			user = getUserManager().getUser(userId);
 		} else {
-			// populate user object from database, so all fields don't need to
-			// be hidden fields in form
-			return getUserManager().getUser(request.getParameter("id"));
+			user = new User();
+			user.addRole(new Role(Constants.USER_ROLE));
 		}
+
+		user.setConfirmPassword(user.getPassword());
+
+		return user;
 	}
 
 	private boolean isFormSubmission(HttpServletRequest request) {

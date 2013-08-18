@@ -16,16 +16,10 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.util.Version;
 import org.hibernate.HibernateException;
 import org.hibernate.IdentifierLoadAccess;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.search.FullTextSession;
-import org.hibernate.search.Search;
 
 /**
  * This class serves as the Base class for all other DAOs - namely to hold
@@ -53,7 +47,6 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     private Class<T> persistentClass;
     @Resource
     private SessionFactory sessionFactory;
-    private Analyzer defaultAnalyzer;
 
     /**
      * Constructor that takes in a class to see which type of entity to persist.
@@ -63,7 +56,6 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
      */
     public GenericDaoHibernate(final Class<T> persistentClass) {
         this.persistentClass = persistentClass;
-        defaultAnalyzer = new StandardAnalyzer(Version.LUCENE_35);
     }
 
     /**
@@ -75,7 +67,6 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     public GenericDaoHibernate(final Class<T> persistentClass, SessionFactory sessionFactory) {
         this.persistentClass = persistentClass;
         this.sessionFactory = sessionFactory;
-        defaultAnalyzer = new StandardAnalyzer(Version.LUCENE_35);
     }
 
     public SessionFactory getSessionFactory() {
@@ -118,7 +109,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
      * {@inheritDoc}
      */
     public List<T> search(String searchTerm) throws SearchException {
-        Session sess = getSession();
+       /* Session sess = getSession();
         FullTextSession txtSession = Search.getFullTextSession(sess);
 
         org.apache.lucene.search.Query qry;
@@ -130,6 +121,9 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
         org.hibernate.search.FullTextQuery hibQuery = txtSession.createFullTextQuery(qry,
                 this.persistentClass);
         return hibQuery.list();
+        */
+    	if (1==2) throw new SearchException(new RuntimeException());
+    	return null;
     }
 
     /**
@@ -206,7 +200,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
      * {@inheritDoc}
      */
     public void reindex() {
-        HibernateSearchTools.reindex(persistentClass, getSessionFactory().getCurrentSession());
+        //HibernateSearchTools.reindex(persistentClass, getSessionFactory().getCurrentSession());
     }
 
 
@@ -214,6 +208,6 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
      * {@inheritDoc}
      */
     public void reindexAll(boolean async) {
-        HibernateSearchTools.reindexAll(async, getSessionFactory().getCurrentSession());
+        //HibernateSearchTools.reindexAll(async, getSessionFactory().getCurrentSession());
     }
 }

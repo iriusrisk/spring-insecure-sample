@@ -21,12 +21,6 @@
     <input type="password" class="input-block-level" name="j_password" id="j_password" tabindex="2"
            placeholder="<fmt:message key="label.password"/>" required>
 
-<c:if test="${appConfig['rememberMeEnabled']}">
-    <label class="checkbox" for="rememberMe">
-        <input type="checkbox" class="checkbox" name="_spring_security_remember_me" id="rememberMe" tabindex="3"/>
-        <fmt:message key="login.rememberMe"/></label>
-</c:if>
-
     <button type="submit" class="btn btn-large btn-primary" name="login" tabindex="4">
         <fmt:message key='button.login'/>
     </button>
