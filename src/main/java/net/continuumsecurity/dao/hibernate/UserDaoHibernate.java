@@ -86,7 +86,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
      * {@inheritDoc}
     */
     public UserDetails loadUserDetailsByUsername(String username) throws UsernameNotFoundException {
-        String dbUrl = "jdbc:mysql://localhost/spring_mvc_example";
+        String dbUrl = "jdbc:mysql://localhost/spring_insecure_sample";
         String dbClass = "com.mysql.jdbc.Driver";
         String query = "Select * from app_user where username='"+username+"'";
         String dbusername = "root";

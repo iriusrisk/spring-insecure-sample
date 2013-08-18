@@ -6,8 +6,8 @@
 	<artifactId>spring-insecure-sample</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>AppFuse Spring MVC Application</name>
-	<url>http://www.mycompany.com</url>
+	<name>Insecure Spring Sample Application</name>
+	<url>http://www.continuumsecurity.net</url>
 	<prerequisites>
 		<maven>2.2.1</maven>
 	</prerequisites>
@@ -1002,7 +1002,7 @@
 		<web.framework>spring</web.framework>
 		<amp.genericCore>true</amp.genericCore>
 		<amp.fullSource>true</amp.fullSource>
-		<db.name>spring_mvc_example</db.name>
+		<db.name>spring_insecure_sample</db.name>
 		<!-- Framework dependency versions -->
 		<appfuse.version>2.2.1</appfuse.version>
 		<commons.fileupload.version>1.2.1</commons.fileupload.version>
