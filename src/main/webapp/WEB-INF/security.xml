@@ -15,12 +15,12 @@
         <intercept-url pattern="/app/viewFile*" access="ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER"/>
         <intercept-url pattern="/app/**" access="ROLE_ADMIN,ROLE_USER"/>
         <form-login login-page="/login" authentication-failure-url="/login?error=true" login-processing-url="/j_security_check"/>
+        <session-management session-fixation-protection="none"/>
     </http>
 
     <authentication-manager>
         <authentication-provider user-service-ref="userDao">
             <password-encoder ref="passwordEncoder"/>
-
         </authentication-provider>
     </authentication-manager>
 
