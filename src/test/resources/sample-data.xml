@@ -71,7 +71,7 @@
             <value description="address"></value>
             <value description="city">Denver</value>
             <value description="country">US</value>
-            <value description="email">example-alice@continuumsecurity.net</value>
+            <value description="email">alice@example.com</value>
             <value description="phone_number"></value>
             <value description="postal_code">80210</value>
             <value description="province">CO</value>
@@ -92,7 +92,7 @@
             <value description="address"></value>
             <value description="city">Denver</value>
             <value description="country">US</value>
-            <value description="email">example-bob@continuumsecurity.net</value>
+            <value description="email">bob@example.com</value>
             <value description="phone_number"></value>
             <value description="postal_code">80210</value>
             <value description="province">CO</value>

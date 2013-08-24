@@ -42,7 +42,7 @@ import java.util.Map;
 public class BaseFormController implements ServletContextAware {
     protected final transient Log log = LogFactory.getLog(getClass());
     public static final String MESSAGES_KEY = "successMessages";
-    private UserManager userManager = null;
+    protected UserManager userManager = null;
     protected MailEngine mailEngine = null;
     protected SimpleMailMessage message = null;
     protected String templateName = "accountCreated.vm";

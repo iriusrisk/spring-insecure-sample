@@ -52,7 +52,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
      */
     public User saveUser(User user) {
         if (log.isDebugEnabled()) {
-            log.debug("user's id: " + user.getId());
+            log.debug("Saving user with id: " + user.getId());
         }
         getSession().saveOrUpdate(user);
         // necessary to throw a DataIntegrityViolation and catch it in UserManager
@@ -120,7 +120,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
-            throw new RecoverableDataAccessException(e.getMessage());
+            //throw new RecoverableDataAccessException(e.getMessage());
         }
         if (user == null) throw new UsernameNotFoundException("user '" + username + "' not found...");
         return user;

@@ -151,9 +151,6 @@
 		<listener-class>net.continuumsecurity.webapp.listener.UserCounterListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>net.continuumsecurity.webapp.jsp.EscapeXmlELResolverListener</listener-class>
-	</listener>
-	<listener>
 		<listener-class>net.sf.navigator.menu.MenuContextListener</listener-class>
 	</listener>
 
@@ -232,7 +229,7 @@
 		<session-timeout>15</session-timeout>
 		<cookie-config>
 			<http-only>false</http-only>
-			<!--<secure>true</secure> -->
+			
 		</cookie-config>
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>

@@ -66,7 +66,7 @@
     </logger>
 
     <logger name="net.continuumsecurity.tool">
-        <level value="INFO"/>
+        <level value="DEBUG"/>
     </logger>
 
     <root>
