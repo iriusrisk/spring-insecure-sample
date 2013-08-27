@@ -120,7 +120,7 @@ public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
-            //throw new RecoverableDataAccessException(e.getMessage());
+            throw new RecoverableDataAccessException(e.getMessage());
         }
         if (user == null) throw new UsernameNotFoundException("user '" + username + "' not found...");
         return user;

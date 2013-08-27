@@ -167,7 +167,7 @@
 				<version>2.3</version>
 				<configuration>
 					<escapeString>\</escapeString>
-					<warName>insecure-sample</warName>
+					<warName>insecure</warName>
 					<webResources>
 						<resource>
 							<directory>src/main/resources/packaged</directory>
