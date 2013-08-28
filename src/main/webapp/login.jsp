@@ -53,8 +53,21 @@
 	<p>
 		<fmt:message key="login.passwordHint" />
 	</p>
-	Current URL:
-            <script>
-                document.write(unescape(document.URL));
-            </script>
+	
+Languages:
+<ul><li>
+<script>	
+	var pos = document.location.href.indexOf("lang=");
+	var lang="en";
+	if (pos > 5) lang = document.location.href.substring(pos+5);
+	document.write(unescape(lang));
+</script>
+</li>
+<li>
+<div class="theUrl"></div>
+<script>
+	$('div.theUrl').html(unescape(lang));
+</script>
+</li>
+</ul>
 </body>
