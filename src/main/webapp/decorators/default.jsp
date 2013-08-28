@@ -64,7 +64,7 @@
             </c:if>
             Current URL:
             <script>
-                document.write(unescape(document.URL));
+                document.write(document.URL);
             </script>
         </span>
         <span class="right">
