@@ -8,8 +8,8 @@
 
 	<form method="post" id="loginForm"
 		action="<c:url value='/j_security_check'/>"
-		onsubmit="saveUsername(this);return validateForm(this)"
-		class="form-signin" autocomplete="off">
+		class="form-signin">
+		
 		<h2 class="form-signin-heading">
 			<fmt:message key="login.heading" />
 		</h2>
@@ -53,4 +53,8 @@
 	<p>
 		<fmt:message key="login.passwordHint" />
 	</p>
+	Current URL:
+            <script>
+                document.write(unescape(document.URL));
+            </script>
 </body>
