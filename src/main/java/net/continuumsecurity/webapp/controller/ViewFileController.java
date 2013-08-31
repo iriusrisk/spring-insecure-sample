@@ -26,7 +26,11 @@ public class ViewFileController {
 
     @RequestMapping(method = RequestMethod.GET)
     public void getFile(@RequestParam(required = true, value = "filename") String fileName,
-                        HttpServletResponse response) {
+                        HttpServletResponse response) throws IOException {
+    	if (fileName.indexOf('/') > -1 || fileName.indexOf('\\') > -1 || fileName.contains("..")) {
+    		response.sendError(HttpServletResponse.SC_FORBIDDEN, "Invalid characters entered.");
+    		return;
+    	}
         String path = getServletContext().getRealPath("/resources") + "/" + fileName;
         log.debug("Getting file: " + path);
         File file = new File(path);
@@ -38,7 +42,6 @@ public class ViewFileController {
 
             response.flushBuffer();
             log.debug("flushed");
-
         } catch (IOException ex) {
             log.info("Error writing file to output stream. Filename was '" + path + "'");
             throw new RuntimeException("IO Error writing file to output stream");

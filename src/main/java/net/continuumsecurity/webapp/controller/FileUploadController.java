@@ -81,7 +81,7 @@ public class FileUploadController extends BaseFormController {
         InputStream stream = file.getInputStream();
 
         //write the file to the file specified
-        OutputStream bos = new FileOutputStream(uploadDir + file.getOriginalFilename());
+        OutputStream bos = new FileOutputStream(uploadDir + fileUpload.getName());
         int bytesRead;
         byte[] buffer = new byte[8192];
 
@@ -100,11 +100,11 @@ public class FileUploadController extends BaseFormController {
         request.setAttribute("contentType", file.getContentType());
         request.setAttribute("size", file.getSize() + " bytes");
 
-        String link = request.getContextPath() + "/viewFile?filename="+ file.getOriginalFilename() ;
+        String link = request.getContextPath() + "/viewFile?filename="+ fileUpload.getName();
         request.setAttribute("link", link);
         request.setAttribute("location", link);
 
-        log.info("Uploaded to: "+link+ file.getOriginalFilename());
+        log.info("Uploaded to: "+uploadDir+fileUpload.getName());
         log.info("Full path: "+dirPath.getAbsolutePath() + Constants.FILE_SEP + file.getOriginalFilename());
         return getSuccessView();
     }
