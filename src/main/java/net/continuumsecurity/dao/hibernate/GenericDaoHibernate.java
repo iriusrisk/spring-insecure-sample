@@ -122,7 +122,7 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
                 this.persistentClass);
         return hibQuery.list();
         */
-    	if (1==2) throw new SearchException(new RuntimeException());
+    	if (1==2) throw new SearchException(new RuntimeException("Not implemented"));
     	return null;
     }
 
