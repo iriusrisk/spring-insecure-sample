@@ -1,25 +1,29 @@
 package net.continuumsecurity.dao.hibernate;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import net.continuumsecurity.dao.GenericDao;
-import net.continuumsecurity.dao.SearchException;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.orm.ObjectRetrievalFailureException;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Resource;
+
+import net.continuumsecurity.dao.GenericDao;
+import net.continuumsecurity.dao.SearchException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.IdentifierLoadAccess;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.orm.ObjectRetrievalFailureException;
 
 /**
  * This class serves as the Base class for all other DAOs - namely to hold
@@ -93,7 +97,15 @@ public class GenericDaoHibernate<T, PK extends Serializable> implements GenericD
     @SuppressWarnings("unchecked")
     public List<T> getAll() {
         Session sess = getSession();
-        return sess.createCriteria(persistentClass).list();
+        Criteria criteria = sess.createCriteria(persistentClass);
+        List<T> duplicates = criteria.list();
+        List<T> result = new ArrayList<T>();
+        for (T t : duplicates) {
+        	if (!result.contains(t)) {
+        		result.add(t);
+        	}
+        }
+        return result;
     }
 
     /**

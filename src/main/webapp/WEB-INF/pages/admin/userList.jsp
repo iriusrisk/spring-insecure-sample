@@ -46,6 +46,14 @@
                         style="width: 16%; padding-left: 15px" media="html">
             <input type="checkbox" disabled="disabled" <c:if test="${users.enabled}">checked="checked"</c:if>/>
         </display:column>
+        
+        <display:column titleKey="Actions" style="width: 16%; padding-left: 15px" media="html">
+            <form id="makeAdmin" action="<c:url value='/admin/makeadmin'/>" method="POST">  
+            <input type="hidden" name="username" value="${users.username}"/>          
+            <input type="submit" value="Make admin"/>
+            </form>
+        </display:column>
+                
         <display:column property="enabled" titleKey="user.enabled" media="csv xml excel pdf"/>
 
         <display:setProperty name="paging.banner.item_name"><fmt:message key="userList.user"/></display:setProperty>
