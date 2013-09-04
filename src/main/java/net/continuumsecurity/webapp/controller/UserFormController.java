@@ -65,16 +65,13 @@ public class UserFormController extends BaseFormController {
 
 		if (validator != null) { // validator is null during testing
 			validator.validate(user, errors);
-
 			if (errors.hasErrors() && request.getParameter("delete") == null) {
 				return "userform";
 			}
 		}
 
 		log.debug("entering 'onSubmit' method...");
-
 		Locale locale = request.getLocale();
-
 		if (request.getParameter("delete") != null) {
 			getUserManager().removeUser(user.getId().toString());
 			saveMessage(request,
@@ -82,9 +79,7 @@ public class UserFormController extends BaseFormController {
 
 			return getSuccessView();
 		} else {
-
 			String[] userRoles = request.getParameterValues("userRoles");
-
 			if (userRoles != null) {
 				user.getRoles().clear();
 				for (String roleName : userRoles) {
@@ -93,7 +88,6 @@ public class UserFormController extends BaseFormController {
 			}
 
 			Integer originalVersion = user.getVersion();
-
 			try {
 				getUserManager().saveUser(user);
 			} catch (AccessDeniedException ade) {
@@ -106,12 +100,10 @@ public class UserFormController extends BaseFormController {
 				errors.rejectValue("username", "errors.existing.user",
 						new Object[] { user.getUsername(), user.getEmail() },
 						"duplicate user");
-
 				// redisplay the unencrypted passwords
 				user.setPassword(user.getConfirmPassword());
 				// reset the version # to what was passed in
 				user.setVersion(originalVersion);
-
 				return "userform";
 			}
 
