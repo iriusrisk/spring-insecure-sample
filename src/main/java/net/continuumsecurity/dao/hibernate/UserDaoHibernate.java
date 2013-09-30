@@ -17,17 +17,6 @@ import javax.persistence.Table;
 import java.sql.*;
 import java.util.List;
 
-/**
- * This class interacts with Hibernate session to save/delete and
- * retrieve User objects.
- *
- * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
- *   Modified by <a href="mailto:dan@getrolling.com">Dan Kibler</a>
- *   Extended to implement Acegi UserDetailsService interface by David Carter david@carter.net
- *   Modified by <a href="mailto:bwnoll@gmail.com">Bryan Noll</a> to work with
- *   the new BaseDaoHibernate implementation that uses generics.
- *   Modified by jgarcia (updated to hibernate 4)
-*/
 @Repository("userDao")
 public class UserDaoHibernate extends GenericDaoHibernate<User, Long> implements UserDao, UserDetailsService {
 

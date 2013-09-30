@@ -16,5 +16,8 @@
     <li>
         <a href="<c:url value='/fileupload'/>"><fmt:message key="menu.selectFile"/></a>
     </li>
+     <li>
+        <a href="<c:url value='/redirect?url=/sayhello'/>">Goto greeter</a>
+    </li>
 </ul>
 </body>
