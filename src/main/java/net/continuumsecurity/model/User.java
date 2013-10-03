@@ -108,7 +108,7 @@ public class User extends BaseObject implements Serializable, UserDetails {
         return firstName;
     }
 
-    @Column(name = "last_name", nullable = false, length = 50)
+    @Column(name = "last_name", nullable = false, length = 100)
     public String getLastName() {
         return lastName;
     }
