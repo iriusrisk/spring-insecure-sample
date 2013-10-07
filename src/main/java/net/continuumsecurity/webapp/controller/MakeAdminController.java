@@ -1,5 +1,8 @@
 package net.continuumsecurity.webapp.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import net.continuumsecurity.Constants;
 import net.continuumsecurity.dao.SearchException;
 import net.continuumsecurity.model.User;
@@ -18,30 +21,39 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/admin/makeadmin")
 public class MakeAdminController {
-    private UserManager userManager = null;
+	private UserManager userManager = null;
 	private RoleManager roleManager;
 
 	@Autowired
 	public void setRoleManager(RoleManager roleManager) {
 		this.roleManager = roleManager;
 	}
-	
-    @Autowired
-    public void setUserManager(UserManager userManager) {
-        this.userManager = userManager;
-    }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView handleRequest(@RequestParam(required = true, value = "username") String username) throws Exception {
-        Model model = new ExtendedModelMap();
-        try {
-        	User user = userManager.getUserByUsername(username);
-        	user.addRole(roleManager.getRole("ROLE_ADMIN"));
-        	userManager.saveUser(user);
-            model.addAttribute(Constants.USERNAME, username);
-        } catch (SearchException se) {
-            model.addAttribute("error", se.getMessage());
-        }
-        return new ModelAndView("admin/makeadmin", model.asMap());
-    }
+	@Autowired
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView handleRequest(HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam(required = true, value = "username") String username)
+			throws Exception {
+		
+		if (request.isUserInRole("ROLE_ADMIN")) {
+			Model model = new ExtendedModelMap();
+			try {
+				User user = userManager.getUserByUsername(username);
+				user.addRole(roleManager.getRole("ROLE_ADMIN"));
+				userManager.saveUser(user);
+				model.addAttribute(Constants.USERNAME, username);
+			} catch (SearchException se) {
+				model.addAttribute("error", se.getMessage());
+			}
+			return new ModelAndView("admin/makeadmin", model.asMap());
+		} else {
+			response.sendError(HttpServletResponse.SC_FORBIDDEN);
+			return null;
+		}
+	}
 }
