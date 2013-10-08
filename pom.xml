@@ -20,6 +20,18 @@
 		<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<version>1.0.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.appfuse.plugins</groupId>
 				<artifactId>appfuse-maven-plugin</artifactId>
 				<version>${appfuse.version}</version>
@@ -728,7 +740,7 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+
 	</dependencies>
 	<reporting>
 		<plugins>
